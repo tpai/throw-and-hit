@@ -26,8 +26,11 @@
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="js/funcs.js"></script>
 	<script>
-	
-	var socket = io.connect("http://tonypai.twbbs.org:666", {
+	//custom settings
+	var domain = "sampledomain.com";
+	var port = "666";
+
+	var socket = io.connect("http://"+domain+":"+port, {
 		"force new connection": true
 	});
 	//player data

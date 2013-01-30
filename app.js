@@ -6,7 +6,7 @@ var express = require('express'),
         log: false
     }),
 	fs = require('fs'),
-	svrport = 666;
+	svrport = 666; //custom settings
 
 server.listen(svrport);
 console.log("TH server listening port "+svrport);
