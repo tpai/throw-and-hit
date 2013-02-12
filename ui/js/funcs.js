@@ -1,7 +1,3 @@
-var checkpoint = function() {
-	socket.emit("checkpoint", [p1, p2]);
-};
-
 var setPlayerIcon = function(id) {
 	if(p1.career == "pitcher")
 		$("#player_icon").html("<font color='red'>"+p2.username+"</font><br><img src='images/player_batter"+id+".png'>");
@@ -24,11 +20,14 @@ var youcanroll = function() {
 };
 
 var resetScene = function() {
-
 	//score panel
-	$("#score").html("STRIKE: "+p1.score.strike+" / "+
-				"HIT: "+p1.score.hit+" / "+
-				"HOMERUN: "+p1.score.homerun);
+	$("#score").html(""+
+	"<tr><td>Strike\n<br>好球</td>"+
+	"<td>Hit\n<br>安打</td>"+
+	"<td>Homerun\n<br>全壘打</td>"+
+	"<tr><td>"+p1.score.strike+"</td>"+
+	"<td>"+p1.score.hit+"</td>"+
+	"<td>"+p1.score.homerun+"</td>");
 
 	//player icon
 	setPlayerIcon(1);

@@ -2,14 +2,12 @@ var express = require('express'),
     app = express(),
     http = require('http'),
     server = http.createServer(app),
-    io = require('socket.io').listen(server, {
-        log: false
-    }),
+    io = require('socket.io').listen(server, { log: false }),
 	fs = require('fs'),
 	svrport = 666; //custom settings
 
 server.listen(svrport);
-console.log("TH server listening port "+svrport);
+console.log("Throw&Hit server listening port "+svrport);
 
 var idle_player = [];
 io.sockets.on('connection', function (socket) {
@@ -66,7 +64,12 @@ io.sockets.on('connection', function (socket) {
 	socket.on("exitGame", function(data) {
 		var p2 = data[1];
 		socket.broadcast.emit("oppLeft", {player: p2});
-	})
+	});
+	
+	//update idle player each second
+	setInterval(function() {
+		socket.broadcast.emit("updateIdlePlayer", idle_player);
+	}, 3000);
 	
 	//count the result, and return to player and his opponent
 	socket.on("checkpoint", function(data) {
@@ -97,10 +100,11 @@ io.sockets.on('connection', function (socket) {
 });
 
 app.configure(function () {
-	app.use('/js', express.static(__dirname + '/js'));
-	app.use('/images', express.static(__dirname + '/images'));
-	app.get('/client.html', function (req, res) {
-		fs.readFile(__dirname + '/client.html', function (err, data) {
+	app.use('/js', express.static(__dirname + '/ui/js'));
+	app.use('/css', express.static(__dirname + '/ui/css'));
+	app.use('/images', express.static(__dirname + '/ui/images'));
+	app.get('/', function (req, res) {
+		fs.readFile(__dirname + '/ui/client.html', function (err, data) {
             if (err) {
                 res.writeHead(500);
                 return res.end("Error loading client.html");

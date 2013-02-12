@@ -1,0 +1,25 @@
+#p1, #p2, #msg, #score {
+	font-size: 22px;
+	line-height: 30px;
+	text-align: center;
+}
+
+.game_panel {
+	display: none;
+}
+
+.container {
+  width: 320px;
+  max-width: 90%;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media \0screen {
+  img {
+	width: auto; /* for ie 8 */
+  }
+}

@@ -1,0 +1,64 @@
+<html>
+	<head>
+		<title>Throw & Hit / 你投我打</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		
+		<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+		<link type="text/css" rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css">
+		
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="js/funcs.js"></script>
+		<script src="js/socket.js"></script>
+		<script src="js/match.js"></script>
+		<script src="js/result.js"></script>
+		
+		<link type="text/css" rel="stylesheet" href="css/custom.css">
+	
+	</head>
+	<body>
+		<center><img src="images/logo.png" width="250"></center>
+		<div id="match_panel">
+			<input type="text" id="username" placeholder="nickname / 暱稱" class="textbox">
+			<p>
+				<select id="career">
+					<option value="pitcher">Pitcher / 投手
+					<option value="batter">Batter / 打者
+				</select>
+			</p>
+			<p>
+				<input type="button" id="match" value="Match / 配對">
+				<input type="button" name="exitGame" value="Reset / 重置">
+			</p>
+		</div>
+		
+		<div class="game_panel ui-grid-a">
+			<div class="ui-block-a">
+				<center>
+					<div id="player_icon" class="container"></div>
+				</center>
+			</div>
+			<div class="ui-block-b">
+				<center>
+					<div id="p2">none</div><br>
+					<progress id="enemypoint" max="100" value="0"></progress><br>
+					<div id="p1">none</div><br>
+					<progress id="minepoint" max="100" value="0"></progress><br>
+					<p>
+						<input type="button" id="stopRolling" value="Action / 動作">
+						<input type="button" name="exitGame" value="Exit / 退出">
+					</p>
+					<table id="score" width="100%"></table>
+				</center>
+			</div>
+		</div>
+		<p>
+			<div id="msg" class="ui-body ui-body-c">:)</div>
+		</p>
+		<p>
+			<ul id="idle_player" data-role="listview" data-inset="true">
+				<li data-role="list-divider">Idle player / 等待配對玩家</li>
+			</ul>
+		</p>
+	</body>
+</html>	
