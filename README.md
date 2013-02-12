@@ -11,9 +11,9 @@ A simple baseball game based on nodejs.
 Setup
 -----
 1. unzip files into your webserver root directory, and do '$npm install'.
-2. change domain variable of client.html into yours. (ex. var domain = "tonypai.twbbs.org";)
+2. change domain variable of /ui/js/socket.js into yours. (ex. var domain = "tonypai.twbbs.org";)
 3. '$node app.js'
-4. open browser type 'http://[your_domain_name]:666/client.html
+4. open browser type 'http://[your_domain_name]:666
 5. enjoy!
 
 - - -
@@ -26,7 +26,7 @@ Setup
 安裝流程
 --------
 1. 將所有檔案解壓縮到網頁伺服器的根目錄，然後執行 '$npm install' 安裝相關模組。
-2. 將 client.html 中的 domain 變數改成你的。(ex. var domain = "tonypai.twbbs.org";)
+2. 將 /ui/js/socket.js 中的 domain 變數改成你的。(ex. var domain = "tonypai.twbbs.org";)
 3. '$node app.js'
-4. 打開瀏覽器輸入 'http://[your_domain_name]:666/client.html
+4. 打開瀏覽器輸入 'http://[your_domain_name]:666
 5. 找朋友一起來玩吧!
