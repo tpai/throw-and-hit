@@ -9,7 +9,7 @@ socket
 			socket.emit("request", {order: "join", player: p1});
 		}
 		else {
-			alert("You must type your name.\n你必須輸入一個名字.")
+			alert("You must type something.")
 		}
 	});
 	//when click exitGame button, reset this game.
@@ -37,7 +37,7 @@ socket.on("oppLeft", function(data) {
 	if(data.player.username == p1.username &&
 		data.player.career == p1.career &&
 		data.player.username != "") {
-		alert("Connection lost!\n連線中斷!");
+		alert("Connection lost!");
 		location.reload();
 	}
 });
@@ -45,7 +45,7 @@ socket.on("oppLeft", function(data) {
 //set your status to idle
 socket.on("idle", function() {
 	$("#p1").html(p1.username);
-	$("#msg").html("Waiting...\n<br>等待配對...");
+	$("#msg").html("Waiting...");
 });
 
 //notice that your already found a opponent
@@ -65,8 +65,8 @@ socket.on("notice", function(data) {
 			}
 			$("#p2").html(p2.username);
 			
-			$("#msg").html("Matched!\n<br>配對成功!");
-			alert("Matched!\n配對成功!");
+			$("#msg").html("Matched!");
+			alert("Matched!");
 			setTimeout(resetScene, 2500);
 			break;
 		}
@@ -82,7 +82,7 @@ socket.on("match", function(data) {
 		console.log(p1.username+" match!")
 		if(p1.career == "batter") {
 			//-------
-			$("#msg").html("Pitcher throw!\n<br>投手投出!");
+			$("#msg").html("Pitcher throw!");
 			setPlayerIcon(2);
 			//-------
 			$("#stopRolling").prop("disabled", false);

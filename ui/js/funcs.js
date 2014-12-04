@@ -22,9 +22,9 @@ var youcanroll = function() {
 var resetScene = function() {
 	//score panel
 	$("#score").html(""+
-	"<tr><td>Strike\n<br>好球</td>"+
-	"<td>Hit\n<br>安打</td>"+
-	"<td>Homerun\n<br>全壘打</td>"+
+	"<tr><td>Strike</td>"+
+	"<td>Base Hit</td>"+
+	"<td>Homerun</td>"+
 	"<tr><td>"+p1.score.strike+"</td>"+
 	"<td>"+p1.score.hit+"</td>"+
 	"<td>"+p1.score.homerun+"</td>");
@@ -33,12 +33,12 @@ var resetScene = function() {
 	setPlayerIcon(1);
 
 	//message: ready
-	$("#msg").html("Ready!\n<br>雙方請準備!");
-	console.log("scene reset! / 場景重置!");
+	$("#msg").html("Ready");
+	console.log("Scene reset!");
 
 	//pitcher settigns
 	if(p1.career == "pitcher") {
-		$("#stopRolling").prop("value", "THROW / 投出");
+		$("#stopRolling").prop("value", "THROW");
 		$("#stopRolling").prop("disabled", false);
 		$("#enemypoint").prop("value", 0);
 		//rolling point
@@ -46,7 +46,7 @@ var resetScene = function() {
 	}
 	//batter settings
 	else if(p1.career == "batter") {
-		$("#stopRolling").prop("value", "HIT / 揮棒");
+		$("#stopRolling").prop("value", "SWING");
 		$("#stopRolling").prop("disabled", true);
 		$("#minepoint").prop("value", 0);
 		$("#enemypoint").prop("value", 0);
@@ -59,7 +59,7 @@ var resetScene = function() {
 		p1.round ++;
 		p1.point.push($("#minepoint").prop("value"));
 		if(p1.career == "pitcher") {
-			$("#msg").html("Pitcher throw!\n<br>投手投出!");
+			$("#msg").html("Pitcher throw!");
 			//send duel message to server
 			socket.emit("match", [p1, p2]);
 		}

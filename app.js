@@ -4,7 +4,7 @@ var express = require('express'),
     server = http.createServer(app),
     io = require('socket.io').listen(server, { log: false }),
 	fs = require('fs'),
-	svrport = 666; //custom settings
+	svrport = 6089;
 
 server.listen(svrport);
 console.log("Throw&Hit server listening port "+svrport);
@@ -81,16 +81,16 @@ io.sockets.on('connection', function (socket) {
 		if(p1.career == "batter") {
 			if(p1_point > p2_point) {
 				if(p1_point - p2_point > 30) {
-					msg = "It's deep~~~~~, and gone!!!\n<br>這個球相當的深遠~~~ 是全壘打!!!";
+					msg = "It's deep~~~~~ and gone!!!";
 					msgid = 3;
 				}
 				else {
-					msg = "Base hit!\n<br>結實的打了出去, 是個漂亮的安打!";
+					msg = "Base hit!";
 					msgid = 2;
 				}
 			}
 			else {
-				msg = "Strike!\n<br>揮棒落空~ 記個好球!";
+				msg = "Strike!";
 				msgid = 1;
 			}
 		}
@@ -99,18 +99,4 @@ io.sockets.on('connection', function (socket) {
 	});
 });
 
-app.configure(function () {
-	app.use('/js', express.static(__dirname + '/ui/js'));
-	app.use('/css', express.static(__dirname + '/ui/css'));
-	app.use('/images', express.static(__dirname + '/ui/images'));
-	app.get('/', function (req, res) {
-		fs.readFile(__dirname + '/ui/client.html', function (err, data) {
-            if (err) {
-                res.writeHead(500);
-                return res.end("Error loading client.html");
-            }
-            res.writeHead(200);
-            res.end(data);
-        });
-	});
-});
+app.use(express.static(__dirname + '/ui'));

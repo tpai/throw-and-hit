@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Throw & Hit / 你投我打</title>
+		<title>Throw & Hit</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1"> 
 		<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
@@ -19,16 +19,16 @@
 	<body>
 		<div id="match_panel">
 			<center><img src="images/logo.png" width="250"></center>
-			<input type="text" id="username" placeholder="nickname / 暱稱" class="textbox">
+			<input type="text" id="username" placeholder="nickname" class="textbox">
 			<p>
 				<select id="career">
-					<option value="pitcher">Pitcher / 投手
-					<option value="batter">Batter / 打者
+					<option value="pitcher">Pitcher
+					<option value="batter">Batter
 				</select>
 			</p>
 			<p>
-				<input type="button" id="match" value="Match / 配對">
-				<input type="button" name="exitGame" value="Reset / 重置">
+				<input type="button" id="match" value="Match">
+				<input type="button" name="exitGame" value="Reset">
 			</p>
 		</div>
 		
@@ -45,8 +45,8 @@
 					<div id="p1">none</div><br>
 					<progress id="minepoint" max="100" value="0"></progress><br>
 					<p>
-						<input type="button" id="stopRolling" value="Action / 動作">
-						<input type="button" name="exitGame" value="Exit / 退出">
+						<input type="button" id="stopRolling" value="CLICK">
+						<input type="button" name="exitGame" value="Exit">
 					</p>
 				</center>
 			</div>
@@ -57,7 +57,7 @@
 		</p>
 		<p>
 			<ul id="idle_player" data-role="listview" data-inset="true">
-				<li data-role="list-divider">Idle player / 等待配對玩家</li>
+				<li data-role="list-divider">Wait For Match</li>
 			</ul>
 		</p>
 	</body>
