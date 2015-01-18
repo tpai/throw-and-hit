@@ -4,10 +4,11 @@ var express = require('express'),
     server = http.createServer(app),
     io = require('socket.io').listen(server, { log: false }),
 	fs = require('fs'),
-	svrport = 6089;
+	port = (process.env.PORT || 5000);
 
-server.listen(svrport);
-console.log("Throw&Hit server listening port "+svrport);
+server.listen(port);
+
+console.log("SYSTEM: Server listening port "+port);
 
 var idle_player = [];
 io.sockets.on('connection', function (socket) {
@@ -24,7 +25,7 @@ io.sockets.on('connection', function (socket) {
 						idle_player.splice(i, 1);
 						socket.emit("notice", [p1, p2]);
 						socket.broadcast.emit("notice", [p1, p2]);
-						console.log(p1.username+" match "+p2.username);
+						console.log("MATCH: "+p1.username+" VS. "+p2.username);
 					}
 					break;
 				}
@@ -32,13 +33,13 @@ io.sockets.on('connection', function (socket) {
 						p1.career == idle_player[i].career) {
 					//remove player from idle_player
 					idle_player.splice(i, 1);
-					console.log(p1.username+" left");
+					console.log("DISCONNECT: "+p1.username);
 				}
 				if(i == idle_player.length - 1) {
 					//push player into idle_player, if only him.
 					if(cmd == "join") {
 						idle_player.push(p1);
-						console.log(p1.username+" join");
+						console.log("CONNECT: "+p1.username);
 						socket.emit("idle");
 					}
 					break;

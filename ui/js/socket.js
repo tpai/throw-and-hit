@@ -1,8 +1,7 @@
 //custom settings
-var domain = "localhost";
-var port = "666";
+var domain = window.location.host;
 
-var socket = io.connect("http://"+domain+":"+port, {
+var socket = io.connect(domain, {
 	"force new connection": true
 });
 //player data
