@@ -55,7 +55,7 @@ socket.on("notice", function(data) {
 			
 			$("#msg").html("Matched!");
 			alert("Matched!");
-			setTimeout(resetScene, 2500);
+			setTimeout(resetScene, 1000);
 			break;
 		}
 	}

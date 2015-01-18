@@ -12,6 +12,7 @@ console.log("SYSTEM: Server listening port "+port);
 
 var idle_player = [];
 io.sockets.on('connection', function (socket) {
+
 	//when a player ask for join/leave
 	socket.on('request', function (data) {
 		var p1 = data.player;
@@ -50,10 +51,14 @@ io.sockets.on('connection', function (socket) {
 			//push player into idle_player, if no one here.
 			if(cmd == "join") {
 				idle_player.push(p1);
+				console.log("CONNECT: "+p1.username);
 				socket.emit("idle");
 			}
 		}
-		console.log(idle_player);
+		
+		socket.emit("updateIdlePlayer", idle_player);
+		//update idle player each second
+		socket.broadcast.emit("updateIdlePlayer", idle_player);
     });
 
 	//pass duel message to everyone, but sender.
@@ -66,11 +71,6 @@ io.sockets.on('connection', function (socket) {
 		var p2 = data[1];
 		socket.broadcast.emit("oppLeft", {player: p2});
 	});
-	
-	//update idle player each second
-	setInterval(function() {
-		socket.broadcast.emit("updateIdlePlayer", idle_player);
-	}, 3000);
 	
 	//count the result, and return to player and his opponent
 	socket.on("checkpoint", function(data) {
