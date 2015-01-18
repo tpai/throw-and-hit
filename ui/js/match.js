@@ -2,18 +2,6 @@
 socket
 .on("connect", function () {
 	console.log("connect!");
-	$("#match").click(function() {
-		if($("#username").prop("value") != "") {
-			p1.username = $("#username").prop("value");
-			p1.career = $("#career option:checked").prop("value");
-			socket.emit("request", {order: "join", player: p1});
-		}
-		else {
-			alert("You must type something.")
-		}
-	});
-	//when click exitGame button, reset this game.
-	$("input[name='exitGame']").click(resetGame);
 })
 .on("disconnect", function () {
 	console.log("disconnect!");
@@ -99,4 +87,20 @@ socket.on("updateIdlePlayer", function(data) {
 		html += '<li class="player">['+data[i].career+'] '+data[i].username+'</li>';
 	}
 	$("#idle_player").append(html).listview("refresh");
+});
+
+$(document).ready(function () {
+	// when click match button, send user information to server.
+	$("#match").click(function() {
+		if($("#username").prop("value") != "") {
+			p1.username = $("#username").prop("value");
+			p1.career = $("#career option:checked").prop("value");
+			socket.emit("request", {order: "join", player: p1});
+		}
+		else {
+			alert("You must type something.")
+		}
+	});
+	//when click exitGame button, reset this game.
+	$("input[name='exitGame']").click(resetGame);
 });
