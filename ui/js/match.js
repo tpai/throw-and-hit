@@ -52,10 +52,9 @@ socket.on("notice", function(data) {
 				p2.career = data[i+1].career;
 			}
 			$("#p2").html(p2.username);
-			
 			$("#msg").html("Matched!");
-			alert("Matched!");
-			setTimeout(resetScene, 1000);
+			resetScene();
+			setTimeout(function() { alert("Get Ready!") }, 500);
 			break;
 		}
 	}
