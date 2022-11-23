@@ -1,12 +1,10 @@
 var express = require('express'),
-    app = express(),
-    http = require('http'),
-    server = http.createServer(app),
-    io = require('socket.io').listen(server, { log: false }),
-	fs = require('fs'),
-	port = (process.env.PORT || 5000);
+  app = express(),
+  http = require('http').createServer(app),
+  io = require('socket.io')(http);
+	port = (process.env.PORT || 8080);
 
-server.listen(port);
+http.listen(port);
 
 console.log("SYSTEM: Server listening port "+port);
 

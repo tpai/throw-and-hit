@@ -1,11 +1,7 @@
 # throw-and-hit
 
-A simple baseball game based on nodejs.
+A simple baseball game made by Node.js
 
-How to build?
------
+https://throw-and-hit.tonypa.in/
 
-1. clone this repo.
-* npm install
-* node app.js
-* port 6089
+![screenshot](https://raw.githubusercontent.com/tpai/throw-and-hit/master/screenshot.png)
